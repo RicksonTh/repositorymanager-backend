@@ -4,6 +4,7 @@ const RepositoryController = require('./app/controllers/RepositoryController')
 
 const routes = new Router();
 
+routes.get('/repositories', RepositoryController.index);
 routes.post('/repositories', RepositoryController.store);
 
 module.exports = routes;
