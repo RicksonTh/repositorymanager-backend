@@ -1,5 +1,6 @@
 const app = require('./app');
 const mongoose = require('mongoose');
+require ('dotenv/config');
 
 mongoose.connect(
   process.env.MONGO_URL, {
@@ -9,4 +10,4 @@ mongoose.connect(
   }
 );
 
-app.listen(progress.env.PORT || 3333);
+app.listen(process.env.PORT || 3333);
