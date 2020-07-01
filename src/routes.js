@@ -33,6 +33,10 @@ routes.post('/repos/orgs', async (req, res) => {
   const { github_username, repos } = req.body;
   
   let repository = await Repository.findOne({ github_username });
+
+  if(repository) {
+    return res.json('Repository already exists!')
+  }
   
   if (!repository) {
     const apiRes = await axios.get(
