@@ -1,14 +1,6 @@
 const axios = require("axios");
 const Repository = require("../models/Repository");
 
-/* 5 Funções do Controller:
-    1. index: listar dados
-    2. show: mostrar um único dado
-    3. store: criar
-    4. update: atualizar
-    5. destroy: deletar
- */
-
 module.exports = {
   async index(req, res) {
     const repositories = await Repository.find();
@@ -20,6 +12,10 @@ module.exports = {
     const { github_username, repos } = req.body;
     
     let repository = await Repository.findOne({ github_username });
+
+    if(repository) {
+      return res.json('Repository already exists!')
+    }
     
     if (!repository) {
       const apiRes = await axios.get(
@@ -78,9 +74,13 @@ module.exports = {
   },
 
   async delete(req, res) {
-    const { github_username } = req.query;
+    const { github_username } = req.params;
 
     let repository = await Repository.findOne({ github_username });
+
+    if(!repository) {
+      return res.json({ message: })
+    }
 
     repository = await Repository.deleteOne({ github_username: github_username });
 
