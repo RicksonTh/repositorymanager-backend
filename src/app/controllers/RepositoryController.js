@@ -79,7 +79,7 @@ module.exports = {
     let repository = await Repository.findOne({ github_username });
 
     if(!repository) {
-      return res.json({ message: })
+      return res.json({ message: 'Repository has already been deleted!'})
     }
 
     repository = await Repository.deleteOne({ github_username: github_username });
