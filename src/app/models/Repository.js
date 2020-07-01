@@ -1,21 +1,11 @@
-const Sequelize = require('sequelize')
-const { Model } = require('sequelize');
+const mongoose = require("mongoose");
 
-class Repository extends Model {
-  static init(sequelize) {
-    super.init(
-      {
-        title: Sequelize.STRING,
-        contributors: Sequelize.JSON,
-        pull_requests: Sequelize.JSON,
-        bio_repos: Sequelize.STRING,
-      },
+const RepositorySchema = new mongoose.Schema({
+  title: String,
+  github_username: String,
+  description_repos: String,
+  contributors_repos: [Object],
+  pull_requests: [Object],
+});
 
-      {
-        sequelize,
-      }
-    );
-  }
-}
-
-module.exports = Repository;
+module.exports = mongoose.model("Repository", RepositorySchema);

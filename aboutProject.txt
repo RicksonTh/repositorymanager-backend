@@ -1,6 +1,0 @@
-table: idRepos, title, contribuidores[], pull requests[], bio
-
-rotas:
-listarRepositorios: fazer uma req a api do github e listar repositorio
-salvarRepositorio: vai salvar o repositorio no banco de dados
-listarReposSalvos: listar respositorios salvar no bancon de dados
